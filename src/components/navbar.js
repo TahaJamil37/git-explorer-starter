@@ -1,18 +1,23 @@
 import React from "react";
 import "./styles.css";
 
+import { Outlet,Link } from "react-router-dom";
+
 const Navbar = () => {
   return (
     <>
       <nav>
-        <a href="##" className="logo-nav">
-          Git Explorer
-        </a>
-        <div className="link-cont">
-          <a href="##">Repos</a>
-          <a href="##">Users</a>
-        </div>
+
+        <Link to="/" className="logo-nav"> Git Explorer</Link>
+
+        <Link to="/" className="logo-nav"> Repos</Link>
+
+        <Link to="/users" className="logo-nav"> Users</Link>
+
+
       </nav>
+
+      <Outlet/>
     </>
   );
 };

@@ -1,6 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState} from "react";
 import "./styles.css";
+
+import { useNavigate } from "react-router-dom";
 
 const SearchUser = () => {
   const [username, setUsername] = useState(null);
@@ -8,11 +10,16 @@ const SearchUser = () => {
   const [loading, setLoading] = useState("Submit");
   const [attempts, setAttempts] = useState(3);
 
+  const navigate=  useNavigate();
+
   const handleGetUser = async (e) => {
     const response = await axios.get(
       `https://api.github.com/users/${username}`
     );
+
+    console.log(response.status);
     if (response.status === 200) {
+      navigate(`/users/user/${username}`);
       // REDIRECT
     }
     return response;
